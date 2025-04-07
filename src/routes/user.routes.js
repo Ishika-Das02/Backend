@@ -1,6 +1,10 @@
 import { Router } from "express";
+import { loginUser } from "../controllers/user.controller.js"; // loginUser function is not defined in the provided code
+import { logoutUser } from "../controllers/user.controller.js"; // logoutUser function is not defined in the provided code
 import { registerUser } from "../controllers/user.controller.js";
+import { refreshAccessToken } from "../controllers/user.controller.js";
 import { upload } from "../middlewares/multer.middleware.js";
+import { verifyJWT } from "../middlewares/auth.middleware.js";
 
 const router = Router()
 
@@ -17,6 +21,11 @@ router.route("/register").post(
     ]),
     registerUser
 )
-// router.route("/login").post(registerUser) 
+
+router.route("/login").post(loginUser) 
+
+// secured routes
+router.route("/logout").post(verifyJWT, logoutUser) 
+router.route("/refresh-token").post(refreshAccessToken) 
 
 export default router
