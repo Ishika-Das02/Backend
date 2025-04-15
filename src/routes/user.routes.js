@@ -1,12 +1,20 @@
 import { Router } from "express";
-import { getCurrentUser, getUserChannelProfile, getWatchHistory, loginUser, updateAccountDetails, updateUserAvatar } from "../controllers/user.controller.js"; // loginUser function is not defined in the provided code
-import { logoutUser } from "../controllers/user.controller.js"; // logoutUser function is not defined in the provided code
-import { registerUser } from "../controllers/user.controller.js";
-import { refreshAccessToken } from "../controllers/user.controller.js";
-import { changeCurrentPassword } from "../controllers/user.controller.js";
-import { upload } from "../middlewares/multer.middleware.js";
+import { 
+    loginUser, 
+    logoutUser, 
+    registerUser, 
+    refreshAccessToken, 
+    changeCurrentPassword, 
+    getCurrentUser, 
+    updateUserAvatar, 
+    updateUserCoverImage, 
+    getUserChannelProfile, 
+    getWatchHistory, 
+    updateAccountDetails
+} from "../controllers/user.controller.js";
+import {upload} from "../middlewares/multer.middleware.js"
 import { verifyJWT } from "../middlewares/auth.middleware.js";
-import { get } from "mongoose";
+
 
 const router = Router()
 
